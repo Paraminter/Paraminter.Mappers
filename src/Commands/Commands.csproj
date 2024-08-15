@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Paraminter.Mappers.Commands</AssemblyName>
+
+        <RootNamespace>Paraminter.Mappers.Commands</RootNamespace>
+        
+        <PackageId>Paraminter.Mappers.Commands</PackageId>
+        <Description>Defines commands for Paraminter mappers.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Paraminter.Arguments.Models" />
+        <PackageReference Include="Paraminter.Cqs.Commands" />
+    </ItemGroup>
+
+</Project>
