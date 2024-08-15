@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>Paraminter.Mappers.Queries</AssemblyName>
+
+        <RootNamespace>Paraminter.Mappers.Queries</RootNamespace>
+        
+        <PackageId>Paraminter.Mappers.Queries</PackageId>
+        <Description>Defines queries for Paraminter mappers.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Paraminter.Arguments.Models" />
+        <PackageReference Include="Paraminter.Cqs.Queries" />
+    </ItemGroup>
+
+</Project>
