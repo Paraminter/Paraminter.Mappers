@@ -10,7 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Paraminter.Arguments.Models" />
         <PackageReference Include="Paraminter.Cqs.Queries" />
     </ItemGroup>
 
