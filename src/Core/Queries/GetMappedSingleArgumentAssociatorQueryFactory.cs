@@ -2,9 +2,9 @@
 
 using Paraminter.Parameters.Models;
 
-internal static class GetMappedIndividualArgumentAssociatorQueryFactory
+internal static class GetMappedSingleArgumentAssociatorQueryFactory
 {
-    public static IGetMappedIndividualArgumentAssociatorQuery<TParameter> Create<TParameter>(
+    public static IGetMappedSingleArgumentAssociatorQuery<TParameter> Create<TParameter>(
         TParameter parameter)
         where TParameter : IParameter
     {
@@ -12,7 +12,7 @@ internal static class GetMappedIndividualArgumentAssociatorQueryFactory
     }
 
     private sealed class GetMappedIndividualArgumentAssociatorQuery<TParameter>
-        : IGetMappedIndividualArgumentAssociatorQuery<TParameter>
+        : IGetMappedSingleArgumentAssociatorQuery<TParameter>
         where TParameter : IParameter
     {
         private readonly TParameter Parameter;
@@ -23,6 +23,6 @@ internal static class GetMappedIndividualArgumentAssociatorQueryFactory
             Parameter = parameter;
         }
 
-        TParameter IGetMappedIndividualArgumentAssociatorQuery<TParameter>.Parameter => Parameter;
+        TParameter IGetMappedSingleArgumentAssociatorQuery<TParameter>.Parameter => Parameter;
     }
 }

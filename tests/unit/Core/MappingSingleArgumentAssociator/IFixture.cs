@@ -13,7 +13,7 @@ internal interface IFixture<TParameter, TArgumentData>
     where TParameter : IParameter
     where TArgumentData : IArgumentData
 {
-    public abstract ICommandHandler<IAssociateIndividualArgumentCommand<TParameter, TArgumentData>> Sut { get; }
+    public abstract ICommandHandler<IAssociateSingleArgumentCommand<TParameter, TArgumentData>> Sut { get; }
 
-    public abstract Mock<IQueryHandler<IGetMappedIndividualArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateIndividualMappedArgumentCommand<TArgumentData>>>> MapperMock { get; }
+    public abstract Mock<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> MapperMock { get; }
 }
