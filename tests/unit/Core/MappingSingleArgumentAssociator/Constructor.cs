@@ -25,16 +25,16 @@ public sealed class Constructor
     [Fact]
     public void ValidArguments_ReturnsAssociator()
     {
-        var result = Target(Mock.Of<IQueryHandler<IGetMappedIndividualArgumentAssociatorQuery<IParameter>, ICommandHandler<IAssociateIndividualMappedArgumentCommand<IArgumentData>>>>());
+        var result = Target(Mock.Of<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<IParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<IArgumentData>>>>());
 
         Assert.NotNull(result);
     }
 
-    private static MappingIndividualAssociator<TParameter, TArgumentData> Target<TParameter, TArgumentData>(
-        IQueryHandler<IGetMappedIndividualArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateIndividualMappedArgumentCommand<TArgumentData>>> mapper)
+    private static MappingSingleArgumentAssociator<TParameter, TArgumentData> Target<TParameter, TArgumentData>(
+        IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>> mapper)
         where TParameter : IParameter
         where TArgumentData : IArgumentData
     {
-        return new MappingIndividualAssociator<TParameter, TArgumentData>(mapper);
+        return new MappingSingleArgumentAssociator<TParameter, TArgumentData>(mapper);
     }
 }
