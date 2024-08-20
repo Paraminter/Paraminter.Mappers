@@ -2,22 +2,22 @@
 
 using Paraminter.Parameters.Models;
 
-internal static class GetMappedSingleArgumentAssociatorQueryFactory
+internal static class MapParameterToSingleArgumentAssociatorQueryFactory
 {
     public static IMapParameterToSingleArgumentAssociatorQuery<TParameter> Create<TParameter>(
         TParameter parameter)
         where TParameter : IParameter
     {
-        return new GetMappedIndividualArgumentAssociatorQuery<TParameter>(parameter);
+        return new MapParameterToSingleArgumentAssociatorQuery<TParameter>(parameter);
     }
 
-    private sealed class GetMappedIndividualArgumentAssociatorQuery<TParameter>
+    private sealed class MapParameterToSingleArgumentAssociatorQuery<TParameter>
         : IMapParameterToSingleArgumentAssociatorQuery<TParameter>
         where TParameter : IParameter
     {
         private readonly TParameter Parameter;
 
-        public GetMappedIndividualArgumentAssociatorQuery(
+        public MapParameterToSingleArgumentAssociatorQuery(
             TParameter parameter)
         {
             Parameter = parameter;

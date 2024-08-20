@@ -35,7 +35,7 @@ public sealed class MappingSingleArgumentAssociator<TParameter, TArgumentData>
             throw new ArgumentNullException(nameof(command));
         }
 
-        var mappingCommand = GetMappedSingleArgumentAssociatorQueryFactory.Create(command.Parameter);
+        var mappingCommand = MapParameterToSingleArgumentAssociatorQueryFactory.Create(command.Parameter);
         var associateMappedCommand = AssociateSingleMappedArgumentCommandFactory.Create(command.ArgumentData);
 
         var associator = Mapper.Handle(mappingCommand);
