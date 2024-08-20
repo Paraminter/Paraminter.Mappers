@@ -4,7 +4,7 @@ using Paraminter.Parameters.Models;
 
 internal static class GetMappedSingleArgumentAssociatorQueryFactory
 {
-    public static IGetMappedSingleArgumentAssociatorQuery<TParameter> Create<TParameter>(
+    public static IMapParameterToSingleArgumentAssociatorQuery<TParameter> Create<TParameter>(
         TParameter parameter)
         where TParameter : IParameter
     {
@@ -12,7 +12,7 @@ internal static class GetMappedSingleArgumentAssociatorQueryFactory
     }
 
     private sealed class GetMappedIndividualArgumentAssociatorQuery<TParameter>
-        : IGetMappedSingleArgumentAssociatorQuery<TParameter>
+        : IMapParameterToSingleArgumentAssociatorQuery<TParameter>
         where TParameter : IParameter
     {
         private readonly TParameter Parameter;
@@ -23,6 +23,6 @@ internal static class GetMappedSingleArgumentAssociatorQueryFactory
             Parameter = parameter;
         }
 
-        TParameter IGetMappedSingleArgumentAssociatorQuery<TParameter>.Parameter => Parameter;
+        TParameter IMapParameterToSingleArgumentAssociatorQuery<TParameter>.Parameter => Parameter;
     }
 }

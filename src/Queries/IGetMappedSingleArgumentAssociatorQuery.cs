@@ -2,9 +2,9 @@
 
 using Paraminter.Cqs;
 
-/// <summary>Represents a query for an associator of single arguments with specific parameters.</summary>
-/// <typeparam name="TParameter">The type representing the parameters.</typeparam>
-public interface IGetMappedSingleArgumentAssociatorQuery<out TParameter>
+/// <summary>Represents a query to map a parameter to an associator of arguments with that parameter.</summary>
+/// <typeparam name="TParameter">The type representing the parameter.</typeparam>
+public interface IMapParameterToSingleArgumentAssociatorQuery<out TParameter>
     : IQuery
 {
     /// <summary>The parameter.</summary>

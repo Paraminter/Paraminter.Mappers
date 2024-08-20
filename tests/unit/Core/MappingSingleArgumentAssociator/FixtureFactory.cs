@@ -15,7 +15,7 @@ internal static class FixtureFactory
         where TParameter : IParameter
         where TArgumentData : IArgumentData
     {
-        Mock<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> mapperMock = new();
+        Mock<IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> mapperMock = new();
 
         MappingSingleArgumentAssociator<TParameter, TArgumentData> sut = new(mapperMock.Object);
 
@@ -29,11 +29,11 @@ internal static class FixtureFactory
     {
         private readonly ICommandHandler<IAssociateSingleArgumentCommand<TParameter, TArgumentData>> Sut;
 
-        private readonly Mock<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> MapperMock;
+        private readonly Mock<IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> MapperMock;
 
         public Fixture(
             ICommandHandler<IAssociateSingleArgumentCommand<TParameter, TArgumentData>> sut,
-            Mock<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> mapperMock)
+            Mock<IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> mapperMock)
         {
             Sut = sut;
 
@@ -42,6 +42,6 @@ internal static class FixtureFactory
 
         ICommandHandler<IAssociateSingleArgumentCommand<TParameter, TArgumentData>> IFixture<TParameter, TArgumentData>.Sut => Sut;
 
-        Mock<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> IFixture<TParameter, TArgumentData>.MapperMock => MapperMock;
+        Mock<IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>> IFixture<TParameter, TArgumentData>.MapperMock => MapperMock;
     }
 }
