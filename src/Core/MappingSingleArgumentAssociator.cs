@@ -17,12 +17,12 @@ public sealed class MappingSingleArgumentAssociator<TParameter, TArgumentData>
     where TParameter : IParameter
     where TArgumentData : IArgumentData
 {
-    private readonly IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>> Mapper;
+    private readonly IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>> Mapper;
 
     /// <summary>Instantiates an associator of single arguments with parameters through mapped associators.</summary>
     /// <param name="mapper">Maps parameters to associators.</param>
     public MappingSingleArgumentAssociator(
-        IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>> mapper)
+        IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>> mapper)
     {
         Mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
@@ -35,7 +35,7 @@ public sealed class MappingSingleArgumentAssociator<TParameter, TArgumentData>
             throw new ArgumentNullException(nameof(command));
         }
 
-        var mappingCommand = GetMappedSingleArgumentAssociatorQueryFactory.Create(command.Parameter);
+        var mappingCommand = MapParameterToSingleArgumentAssociatorQueryFactory.Create(command.Parameter);
         var associateMappedCommand = AssociateSingleMappedArgumentCommandFactory.Create(command.ArgumentData);
 
         var associator = Mapper.Handle(mappingCommand);

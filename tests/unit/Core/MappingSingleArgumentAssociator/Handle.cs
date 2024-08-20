@@ -41,7 +41,7 @@ public sealed class Handle
 
         var fixture = FixtureFactory.Create<IParameter, IArgumentData>();
 
-        fixture.MapperMock.Setup(static (mapper) => mapper.Handle(It.IsAny<IGetMappedSingleArgumentAssociatorQuery<IParameter>>())).Returns(mappedAssociatorMock.Object);
+        fixture.MapperMock.Setup(static (mapper) => mapper.Handle(It.IsAny<IMapParameterToSingleArgumentAssociatorQuery<IParameter>>())).Returns(mappedAssociatorMock.Object);
 
         Target(fixture, commandMock.Object);
 
@@ -50,7 +50,7 @@ public sealed class Handle
         mappedAssociatorMock.Verify(AssociateMappedExpression(argumentData), Times.Once());
     }
 
-    private static Expression<Action<IQueryHandler<IGetMappedSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>>> GetMappedAssociatorExpression<TParameter, TArgumentData>(
+    private static Expression<Action<IQueryHandler<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, ICommandHandler<IAssociateSingleMappedArgumentCommand<TArgumentData>>>>> GetMappedAssociatorExpression<TParameter, TArgumentData>(
         TParameter parameter)
         where TParameter : IParameter
         where TArgumentData : IArgumentData
@@ -65,7 +65,7 @@ public sealed class Handle
         return (associator) => associator.Handle(It.Is(MatchAssociateMappedCommand(argumentData)));
     }
 
-    private static Expression<Func<IGetMappedSingleArgumentAssociatorQuery<TParameter>, bool>> MatchGetMappedAssociatorCommand<TParameter>(
+    private static Expression<Func<IMapParameterToSingleArgumentAssociatorQuery<TParameter>, bool>> MatchGetMappedAssociatorCommand<TParameter>(
         TParameter parameter)
         where TParameter : IParameter
     {
